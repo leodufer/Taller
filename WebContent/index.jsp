@@ -40,7 +40,7 @@
 			<%=a.getId()+" "+a.getNombre()+" "+a.getApellido() %>
 				<ul>
 				<%for(Materia m:a.getMaterias()){ %>
-					<li><%=m.getNombre()%></li>
+					<li><%=m.getNombre()%>        <a href="desmatricular?m=<%=m.getId()%>&a=<%=a.getId()%>"><span class="fui-cross"></span></a></li>
 				<%} %>
 				</ul>
 				<% MateriaDao mdao = new MateriaDao();
@@ -52,10 +52,10 @@
 						<%for(Materia m:materias){ %>
 						<option value="<%=m.getId()%>"><%=m.getNombre()%></option>
 						
-						<%} %>
+						<%} mdao.close();%>
 					</select>
 					<input type="hidden" value="<%=a.getId()%>" name="alumno">
-					<input type="submit">
+					<input type="submit" class="btn btn-danger" value="Matricular">
 				</form>
 			</li>
 	<%} 
@@ -64,12 +64,26 @@
 </ul>
 <hr>
 <form action="alumno" method="post">
-	<input type="text" placeholder="Nombre" required name="nombre">
-	<input type="text" placeholder="Apellido" required name="apellido">
-	<input type="submit" value="Añadir Alumno">
+	<input type="text" placeholder="Nombre" required name="nombre" class="form-control flat">
+	<input type="text" placeholder="Apellido" required name="apellido" class="form-control flat">
+	<input type="submit" value="Añadir Alumno" class="btn btn-danger">
 </form>
 
 
 
 </body>
+<!-- Load JS here for greater good =============================-->
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/jquery.ui.touch-punch.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-select.js"></script>
+    <script src="js/bootstrap-switch.js"></script>
+    <script src="js/flatui-checkbox.js"></script>
+    <script src="js/flatui-radio.js"></script>
+    <script src="js/jquery.tagsinput.js"></script>
+    <script src="js/jquery.placeholder.js"></script>
+    <script type="text/javascript">
+    	$("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
+    </script>
 </html>

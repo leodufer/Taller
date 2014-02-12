@@ -3,6 +3,7 @@ package py.edu.facitec.taller.modelo;
 import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
+
 import javax.persistence.*;
 
 /**
@@ -45,5 +46,12 @@ public class Materia implements Serializable {
 	public void setHora(Integer hora) {
 		this.hora = hora;
 	}
-   
+	@Override
+	public boolean equals(Object obj) {
+		Materia m = (Materia)obj;
+		if(this.id==m.getId())
+		return true;
+		else
+		return false;
+	}
 }

@@ -11,14 +11,14 @@ public class MateriaDao extends GenericDao {
 		em.getTransaction().begin();
 		em.persist(m);
 		em.getTransaction().commit();
-		em.close();
+		
 	}
 	
 	public void actualizar(Materia a){
 		em.getTransaction().begin();
 		em.merge(a);
 		em.getTransaction().commit();
-		em.close();
+		
 	}
 	public void eliminar(Materia m){
 		em.getTransaction().begin();
@@ -26,14 +26,13 @@ public class MateriaDao extends GenericDao {
 		if(m!=null)
 			em.remove(m);
 		em.getTransaction().commit();
-		em.close();
+		
 	}
 	
 	public Materia obtener(Materia m){
 		em.getTransaction().begin();
 		Materia Materia = em.find(Materia.class, m.getId());
 		em.getTransaction().commit();
-		em.close();
 		return Materia;
 	}
 	
@@ -42,7 +41,6 @@ public class MateriaDao extends GenericDao {
 		em.getTransaction().begin();
 		Materias = em.createQuery("From Materia", Materia.class).getResultList();
 		em.getTransaction().commit();
-		em.close();
 		return Materias;
 	}
 }
