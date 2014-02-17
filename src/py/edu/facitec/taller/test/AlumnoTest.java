@@ -5,6 +5,7 @@ import java.util.List;
 import org.junit.Test;
 
 import py.edu.facitec.taller.dao.AlumnoDao;
+import py.edu.facitec.taller.modelo.AbstractEntity;
 import py.edu.facitec.taller.modelo.Alumno;
 import py.edu.facitec.taller.modelo.Materia;
 
@@ -23,7 +24,7 @@ public class AlumnoTest {
 	public void actualizar(){
 		Alumno a = new Alumno();
 		a.setId(2);
-		a.setNombre("Juan");
+		a.setNombre("Rodrigo Adrian");
 		a.setApellido("Perez");
 		
 		AlumnoDao adao = new AlumnoDao();
@@ -63,7 +64,7 @@ public class AlumnoTest {
 		a.setId(4);
 		AlumnoDao adao = new AlumnoDao();
 		
-		a = adao.obtener(a);
+		a =(Alumno)adao.obtener(a);
 		
 		Materia m = new Materia();
 		m.setId(2);
@@ -74,10 +75,15 @@ public class AlumnoTest {
 		
 	}
 	
-	@Test(expected=Exception.class)
-	public void matricularAlumnoMasdeUnaVezEnUnaMateria(){
-		
-	}
 	
+	@Test
+	public void obtener(){
+		AbstractEntity a = new Alumno();
+		AlumnoDao adao = new AlumnoDao();
+		a.setId(8);
+		Alumno b= (Alumno) adao.obtener(a);
+		System.out.println(b.getId()+" "+b.getNombre()+" "+b.getApellido());
+		adao.close();
+	}
 	
 }

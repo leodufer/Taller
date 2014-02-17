@@ -28,12 +28,12 @@ public class DesmatricularServlet extends HttpServlet {
 		Materia m = new Materia();
 		m.setId(Integer.parseInt(request.getParameter("m")));
 		MateriaDao mdao = new MateriaDao();
-		m = mdao.obtener(m);
+		m = (Materia) mdao.obtener(m);
 		mdao.close();
 		Alumno a = new Alumno();
 		a.setId(Integer.parseInt(request.getParameter("a")));
 		AlumnoDao adao = new AlumnoDao();
-		a = adao.obtener(a);
+		a =(Alumno) adao.obtener(a);
 		List<Materia> materias = a.getMaterias();
 		boolean b = materias.remove(m);
 		

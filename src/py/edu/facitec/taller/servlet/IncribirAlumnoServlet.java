@@ -28,7 +28,7 @@ public class IncribirAlumnoServlet extends HttpServlet {
 		Alumno a = new Alumno();
 		AlumnoDao adao = new AlumnoDao();
 		a.setId(Integer.parseInt(request.getParameter("alumno")));
-		a = adao.obtener(a);
+		a = (Alumno)adao.obtener(a);
 		a.getMaterias().add(m);
 		adao.actualizar(a);
 		adao.close();

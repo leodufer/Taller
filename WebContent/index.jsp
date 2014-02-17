@@ -6,7 +6,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Listado de Alumno</title>
@@ -29,6 +29,8 @@
 </head>
 <body class="container">
 <h4>Listado de Alumnos</h4>
+<hr>
+<a href="materia.jsp" class="btn btn-default">Materias</a>
 <hr>
 <% AlumnoDao adao = new AlumnoDao();
 	List<Alumno> alumnos = adao.obtenerAlumnos();
@@ -73,7 +75,7 @@
 
 </body>
 <!-- Load JS here for greater good =============================-->
-    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
     <script src="js/jquery.ui.touch-punch.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

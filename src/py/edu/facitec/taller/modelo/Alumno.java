@@ -13,7 +13,7 @@ import javax.persistence.ManyToMany;
  *
  */
 @Entity
-public class Alumno implements Serializable {
+public class Alumno implements Serializable, AbstractEntity {
 
 	   
 	@Id
