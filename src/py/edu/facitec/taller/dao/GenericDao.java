@@ -1,5 +1,7 @@
 package py.edu.facitec.taller.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -45,6 +47,14 @@ public abstract class GenericDao {
 		AbstractEntity b = (AbstractEntity) em.find(this.entity, a.getId());
 		em.getTransaction().commit();
 		return b;
+	}
+	
+	public List<?> obtenerTodos(){
+		List<?> list = null;
+		em.getTransaction().begin();
+		list = em.createQuery("From "+entity.getSimpleName(), this.entity).getResultList();
+		em.getTransaction().commit();
+		return list;
 	}
 	
 	public void close(){

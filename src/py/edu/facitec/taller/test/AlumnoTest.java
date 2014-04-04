@@ -35,7 +35,7 @@ public class AlumnoTest {
 	public void listarAlumnos(){
 		List<Alumno> alumnos;
 		AlumnoDao adao = new AlumnoDao();
-		alumnos = adao.obtenerAlumnos();
+		alumnos = (List<Alumno>) adao.obtenerTodos();
 		
 		for(Alumno a:alumnos){
 			System.out.println(a.getNombre());
@@ -45,7 +45,7 @@ public class AlumnoTest {
 	@Test
 	public void imprimirListaDeAlumnosConMaterias(){
 			AlumnoDao adao = new AlumnoDao();
-			List<Alumno> alumnos = adao.obtenerAlumnos();
+			List<Alumno> alumnos = (List<Alumno>) adao.obtenerTodos();
 			for(Alumno a:alumnos){
 				System.out.println("Nombre y Apellido: "+a.getNombre()+" "+a.getApellido());
 				System.out.println("-------------------------------------");

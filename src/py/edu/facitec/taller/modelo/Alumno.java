@@ -25,9 +25,7 @@ public class Alumno implements Serializable, AbstractEntity {
 	private List<Materia> materias;
 	private static final long serialVersionUID = 1L;
 
-	public Alumno() {
-		super();
-	}   
+	 
 	public Integer getId() {
 		return this.id;
 	}

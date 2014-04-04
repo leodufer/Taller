@@ -21,10 +21,7 @@ public class Materia implements Serializable, AbstractEntity {
 	private String nombre;
 	private Integer hora;
 	private static final long serialVersionUID = 1L;
-
-	public Materia() {
-		super();
-	}   
+  
 	public Integer getId() {
 		return this.id;
 	}
