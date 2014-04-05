@@ -33,7 +33,7 @@
 <a href="materia.jsp" class="btn btn-default">Materias</a>
 <hr>
 <% AlumnoDao adao = new AlumnoDao();
-	List<Alumno> alumnos = adao.obtenerAlumnos();
+	List<Alumno> alumnos = (List<Alumno>)adao.obtenerTodos();
 %>
 
 <ul>
