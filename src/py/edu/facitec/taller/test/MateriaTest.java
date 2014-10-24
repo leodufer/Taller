@@ -1,5 +1,9 @@
 package py.edu.facitec.taller.test;
 
+import static org.junit.Assert.*;
+
+import java.util.List;
+
 import org.junit.Test;
 
 import py.edu.facitec.taller.dao.MateriaDao;
@@ -14,6 +18,12 @@ public class MateriaTest {
 		m.setNombre("Materia x");
 		m.setHora(25);
 		mdao.insertar(m);
+	}
+	@Test
+	public void obtener(){
+		MateriaDao mdao = new MateriaDao(); 
+		List<Materia> materia =(List<Materia>) mdao.obtenerTodos();
+		assertNotNull(materia);
 	}
 
 }

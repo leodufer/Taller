@@ -27,7 +27,6 @@ public class InsertarAlumnoServlet extends HttpServlet {
 		a.setApellido(request.getParameter("apellido"));
 		AlumnoDao adao = new AlumnoDao();
 		adao.insertar(a);
-		adao.close();
 		response.sendRedirect("index.jsp");
 	}
 

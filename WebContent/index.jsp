@@ -46,7 +46,7 @@
 				<%} %>
 				</ul>
 				<% MateriaDao mdao = new MateriaDao();
-					List<Materia> materias = mdao.obtenerMaterias();
+					List<Materia> materias = mdao.obtenerTodos();
 				%>
 				
 				<form action="inscribir" method="post">
@@ -54,14 +54,13 @@
 						<%for(Materia m:materias){ %>
 						<option value="<%=m.getId()%>"><%=m.getNombre()%></option>
 						
-						<%} mdao.close();%>
+						<%}%>
 					</select>
 					<input type="hidden" value="<%=a.getId()%>" name="alumno">
 					<input type="submit" class="btn btn-danger" value="Matricular">
 				</form>
 			</li>
 	<%} 
-	adao.close();
 	%>
 </ul>
 <hr>

@@ -5,7 +5,6 @@ import java.util.List;
 import org.junit.Test;
 
 import py.edu.facitec.taller.dao.AlumnoDao;
-import py.edu.facitec.taller.modelo.AbstractEntity;
 import py.edu.facitec.taller.modelo.Alumno;
 import py.edu.facitec.taller.modelo.Materia;
 
@@ -54,7 +53,6 @@ public class AlumnoTest {
 				}
 				System.out.println("-------------------------------------");
 			}
-			adao.close();
 	}
 	
 	
@@ -64,26 +62,24 @@ public class AlumnoTest {
 		a.setId(4);
 		AlumnoDao adao = new AlumnoDao();
 		
-		a =(Alumno)adao.obtener(a);
+		a =(Alumno)adao.obtener(a.getId());
 		
 		Materia m = new Materia();
 		m.setId(2);
 		
 		a.getMaterias().add(m);
 		adao.actualizar(a);
-		adao.close();
 		
 	}
 	
 	
 	@Test
 	public void obtener(){
-		AbstractEntity a = new Alumno();
+		Alumno a = new Alumno();
 		AlumnoDao adao = new AlumnoDao();
 		a.setId(8);
-		Alumno b= (Alumno) adao.obtener(a);
+		Alumno b= (Alumno) adao.obtener(a.getId());
 		System.out.println(b.getId()+" "+b.getNombre()+" "+b.getApellido());
-		adao.close();
 	}
 	
 }

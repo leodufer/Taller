@@ -12,7 +12,7 @@ import javax.persistence.*;
  */
 @Entity
 
-public class Materia implements Serializable, AbstractEntity {
+public class Materia implements Serializable {
 
 	   
 	@Id

@@ -6,58 +6,50 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import py.edu.facitec.taller.modelo.AbstractEntity;
-
-public abstract class GenericDao {
+public abstract class GenericDao<T> {
 	
-	public static EntityManagerFactory emf = Persistence.createEntityManagerFactory("Taller");
+	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("Taller");
 	
 	public EntityManager em;
-	private Class<?>  entity;
+	private Class<T>  entity;
 	
-	public GenericDao(Class<?> clazz){
+	public GenericDao(Class<T> clazz){
 		this.em = emf.createEntityManager();
 		this.entity = clazz;
 	}
 	
-	public void insertar(AbstractEntity a){
+	public void insertar(T a){
 		em.getTransaction().begin();
 		em.persist(a);
 		em.getTransaction().commit();
 		
 	}
 	
-	public void actualizar(AbstractEntity a){
+	public void actualizar(T a){
 		em.getTransaction().begin();
 		em.merge(a);
 		em.getTransaction().commit();
 		
 	}
-	public void eliminar(AbstractEntity a){
+	public void eliminar(T a){
 		em.getTransaction().begin();
-		a = (AbstractEntity) em.find(this.entity, a.getId());
-		if(a!=null)
-			em.remove(a);
+		em.remove(em.merge(a));
 		em.getTransaction().commit();
 		
 	}
 	
-	public AbstractEntity obtener(AbstractEntity a){
+	public T obtener(int id){
 		em.getTransaction().begin();
-		AbstractEntity b = (AbstractEntity) em.find(this.entity, a.getId());
+		T b =  em.find(this.entity, id);
 		em.getTransaction().commit();
 		return b;
 	}
 	
-	public List<?> obtenerTodos(){
-		List<?> list = null;
+	public List<T> obtenerTodos(){
+		List<T> list = null;
 		em.getTransaction().begin();
 		list = em.createQuery("From "+entity.getSimpleName(), this.entity).getResultList();
 		em.getTransaction().commit();
 		return list;
-	}
-	
-	public void close(){
-		em.close();
 	}
 }
