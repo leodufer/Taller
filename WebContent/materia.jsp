@@ -13,7 +13,7 @@
 <h4>Gestion de Materias</h4>
 <hr>
 <% MateriaDao mdao = new MateriaDao(); 
-   List<Materia> materias = mdao.obtenerMaterias(); %>
+   List<Materia> materias = mdao.obtenerTodos(); %>
    
 <ul>
 	<% for(Materia m:materias){ %>
@@ -21,7 +21,7 @@
 		<li><%=m.getId()+"-"+m.getNombre()+"-"+m.getHora() %></li>
 				
 	<%}
-		mdao.close();	
+		
 	%>
 </ul>
 <hr>
